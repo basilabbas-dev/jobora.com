@@ -2,8 +2,20 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-const applications = [
+type Application = {
+  id: number;
+  company: string;
+  logo: string;
+  logoColor: string;
+  position: string;
+  location: string;
+  status: string;
+  date: string;
+};
+
+const applications: Application[] = [
   {
     id: 1,
     company: "Google",
@@ -57,14 +69,20 @@ const applications = [
 ];
 
 const statusStyles: Record<string, string> = {
-  Applied: "bg-violet-500/20 text-violet-300 border-violet-400/20",
-  Shortlisted: "bg-cyan-500/20 text-cyan-300 border-cyan-400/20",
-  Interview: "bg-emerald-500/20 text-emerald-300 border-emerald-400/20",
-  Offer: "bg-amber-500/20 text-amber-300 border-amber-400/20",
-  Rejected: "bg-rose-500/20 text-rose-300 border-rose-400/20",
+  Applied:
+    "bg-violet-500/20 text-violet-300 border-violet-400/20",
+  Shortlisted:
+    "bg-cyan-500/20 text-cyan-300 border-cyan-400/20",
+  Interview:
+    "bg-emerald-500/20 text-emerald-300 border-emerald-400/20",
+  Offer:
+    "bg-amber-500/20 text-amber-300 border-amber-400/20",
+  Rejected:
+    "bg-rose-500/20 text-rose-300 border-rose-400/20",
 };
 
 export default function RecentApplications() {
+  const router = useRouter();
   return (
     <section className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#101832]">
       {/* Header */}
@@ -75,9 +93,8 @@ export default function RecentApplications() {
 
         <button
           type="button"
-          onClick={() => {
-            window.location.href = "/applications";
-          }}
+          onClick={() => router.push("/applications")}
+
           className="shrink-0 text-sm text-violet-400 transition hover:text-violet-300"
         >
           View All →
@@ -95,7 +112,9 @@ export default function RecentApplications() {
               <th className="px-4 py-3 font-medium">Location</th>
               <th className="px-4 py-3 font-medium">Status</th>
               <th className="px-4 py-3 font-medium">Applied On</th>
-              <th className="px-4 py-3 text-center font-medium">Actions</th>
+              <th className="px-4 py-3 text-center font-medium">
+                Actions
+              </th>
             </tr>
           </thead>
 
@@ -138,7 +157,8 @@ export default function RecentApplications() {
                 <td className="px-4 py-3.5">
                   <span
                     className={`inline-flex whitespace-nowrap rounded-lg border px-3 py-1.5 text-xs font-medium ${
-                      statusStyles[app.status]
+                      statusStyles[app.status] ??
+                      "border-slate-400/20 bg-slate-500/20 text-slate-300"
                     }`}
                   >
                     {app.status}
@@ -154,9 +174,7 @@ export default function RecentApplications() {
                     type="button"
                     aria-label={`View ${app.company} application`}
                     onClick={() =>
-                      window.location.assign(
-                        `/applications?applicationId=${app.id}`
-                      )
+                      router.push(`/applications?applicationId=${app.id}`)
                     }
                     className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-slate-300 transition hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-white"
                   >
