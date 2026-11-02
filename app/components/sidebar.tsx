@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   LayoutDashboard,
   BriefcaseBusiness,
-  Columns3,
   CalendarDays,
   BarChart3,
   Settings,
@@ -21,11 +20,6 @@ const menuItems = [
     name: "Applications",
     href: "/applications",
     icon: BriefcaseBusiness,
-  },
-  {
-    name: "Kanban",
-    href: "/kanban",
-    icon: Columns3,
   },
   {
     name: "Interviews",
