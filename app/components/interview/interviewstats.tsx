@@ -34,7 +34,7 @@ export default function InterviewStats() {
           <div
             key={stat.title}
             className="rounded-xl border border-white/10 bg-[#101832] p-5"
-          >
+            >
             <div className="flex items-center justify-between">
               <p className="text-sm text-slate-400">{stat.title}</p>
 
