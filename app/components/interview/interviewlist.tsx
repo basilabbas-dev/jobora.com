@@ -49,7 +49,6 @@ export default function InterviewsList() {
           key={interview.id}
           className="rounded-xl border border-white/10 bg-[#101832] p-5"
         >
-          {/* Company and Status */}
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-violet-500/10 text-violet-300">
@@ -87,7 +86,6 @@ export default function InterviewsList() {
             </div>
           </div>
 
-          {/* Interview Details */}
           <div className="mt-5 grid grid-cols-1 gap-4 border-t border-white/10 pt-5 sm:grid-cols-2 xl:grid-cols-4">
             <div className="flex items-center gap-2 text-sm text-slate-300">
               <CalendarDays size={17} className="text-violet-300" />
