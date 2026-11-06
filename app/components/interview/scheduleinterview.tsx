@@ -76,10 +76,8 @@ export default function ScheduleInterviewModal({
           </button>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* Company Name */}
           <div>
             <label className="mb-2 block text-sm text-slate-300">
               Company Name
