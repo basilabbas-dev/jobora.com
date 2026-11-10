@@ -13,7 +13,7 @@ export default function DashboardPage() {
         <WelcomeHeader />
 
         <StatsCards />
-        
+                  
         <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
           <div className="min-w-0 xl:col-span-7">
             <ApplicationsChart />

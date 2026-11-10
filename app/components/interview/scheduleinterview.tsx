@@ -31,7 +31,6 @@ export default function ScheduleInterviewModal({
     mode: "Online",
   });
 
-  // Update form values
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -43,7 +42,6 @@ export default function ScheduleInterviewModal({
     }));
   };
 
-  // Submit form
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -55,7 +53,6 @@ export default function ScheduleInterviewModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
       <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#101832] p-6 shadow-xl">
 
-        {/* Modal Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
             <h2 className="text-xl font-semibold text-white">
@@ -93,7 +90,6 @@ export default function ScheduleInterviewModal({
             />
           </div>
 
-          {/* Job Role */}
           <div>
             <label className="mb-2 block text-sm text-slate-300">
               Job Role
@@ -109,7 +105,6 @@ export default function ScheduleInterviewModal({
             />
           </div>
 
-          {/* Date and Time */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <label className="mb-2 block text-sm text-slate-300">
@@ -141,7 +136,6 @@ export default function ScheduleInterviewModal({
             </div>
           </div>
 
-          {/* Interview Type */}
           <div>
             <label className="mb-2 block text-sm text-slate-300">
               Interview Type
@@ -159,7 +153,6 @@ export default function ScheduleInterviewModal({
             </select>
           </div>
 
-          {/* Interview Mode */}
           <div>
             <label className="mb-2 block text-sm text-slate-300">
               Interview Mode
@@ -175,7 +168,6 @@ export default function ScheduleInterviewModal({
             </select>
           </div>
 
-          {/* Buttons */}
           <div className="flex justify-end gap-3 border-t border-white/10 pt-5">
             <button
               type="button"
