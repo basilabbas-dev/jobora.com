@@ -45,7 +45,6 @@ export default function WelcomeHeader() {
           </p>
         </div>
 
-        {/* Date Picker */}
         <label
           className="
             relative
