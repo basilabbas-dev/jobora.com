@@ -24,8 +24,8 @@ const total = statusData.reduce(
 
 export default function StatusChart() {
   return (
-    <section className="min-w-0 rounded-2xl border border-white/10 bg-[#101832] p-4 sm:p-5">
-      <h2 className="mb-5 text-base font-semibold text-white sm:text-lg">
+    <section className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors duration-200 sm:p-5">
+      <h2 className="mb-5 text-base font-semibold text-[var(--foreground)] sm:text-lg">
         Applications by Status
       </h2>
 
@@ -55,10 +55,10 @@ export default function StatusChart() {
 
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#101832",
-                  border: "1px solid #334166",
+                  backgroundColor: "var(--surface)",
+                  border: "1px solid var(--border)",
                   borderRadius: "10px",
-                  color: "#FFFFFF",
+                  color: "var(--foreground)",
                   fontSize: "12px",
                 }}
                 formatter={(value, name) => [
@@ -71,10 +71,10 @@ export default function StatusChart() {
 
           {/* Center label */}
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-3xl font-bold text-white">
+            <span className="text-3xl font-bold text-[var(--foreground)]">
               {total}
             </span>
-            <span className="mt-1 text-xs text-slate-400">
+            <span className="mt-1 text-xs text-[var(--muted)]">
               Total
             </span>
           </div>
@@ -98,17 +98,17 @@ export default function StatusChart() {
                     style={{ backgroundColor: item.color }}
                   />
 
-                  <span className="truncate text-slate-300">
+                  <span className="truncate text-[var(--muted)]">
                     {item.name}
                   </span>
                 </div>
 
                 <div className="flex shrink-0 items-center gap-3">
-                  <span className="text-slate-200">
+                  <span className="text-[var(--foreground)]">
                     {item.value}
                   </span>
 
-                  <span className="w-9 text-right text-slate-400">
+                  <span className="w-9 text-right text-[var(--muted)]">
                     {percentage}%
                   </span>
                 </div>

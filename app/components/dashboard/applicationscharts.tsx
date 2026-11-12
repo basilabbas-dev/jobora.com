@@ -23,10 +23,10 @@ const chartData = [
 
 export default function ApplicationsChart() {
   return (
-    <section className="min-w-0 rounded-2xl border border-white/10 bg-[#101832] p-4 sm:p-5">
+    <section className="min-w-0 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors duration-200 sm:p-5">
       {/* Chart heading */}
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-white sm:text-lg">
+        <h2 className="text-base font-semibold text-[var(--foreground)] sm:text-lg">
           <span className="mr-2 text-purple-400">▥</span>
           Applications Overview
         </h2>
@@ -34,7 +34,7 @@ export default function ApplicationsChart() {
         <select
           defaultValue="6"
           aria-label="Chart time period"
-          className="rounded-lg border border-white/10 bg-[#141E3B] px-3 py-2 text-xs text-slate-300 outline-none focus:border-purple-400 sm:text-sm"
+          className="rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] px-3 py-2 text-xs text-[var(--foreground)] outline-none transition-colors focus:border-purple-400 sm:text-sm"
         >
           <option value="3">Last 3 Months</option>
           <option value="6">Last 6 Months</option>
@@ -71,14 +71,17 @@ export default function ApplicationsChart() {
             </defs>
 
             <CartesianGrid
-              stroke="#26314F"
+              stroke="var(--border)"
               strokeDasharray="3 3"
               vertical
             />
 
             <XAxis
               dataKey="month"
-              tick={{ fill: "#A5B4D4", fontSize: 12 }}
+              tick={{
+                fill: "var(--muted)",
+                fontSize: 12,
+              }}
               axisLine={false}
               tickLine={false}
               tickMargin={10}
@@ -87,7 +90,10 @@ export default function ApplicationsChart() {
             <YAxis
               domain={[0, 15]}
               ticks={[0, 5, 10, 15]}
-              tick={{ fill: "#A5B4D4", fontSize: 12 }}
+              tick={{
+                fill: "var(--muted)",
+                fontSize: 12,
+              }}
               axisLine={false}
               tickLine={false}
               width={30}
@@ -95,17 +101,22 @@ export default function ApplicationsChart() {
 
             <Tooltip
               contentStyle={{
-                backgroundColor: "#101832",
-                border: "1px solid #334166",
+                backgroundColor: "var(--surface)",
+                border: "1px solid var(--border)",
                 borderRadius: "12px",
-                color: "#FFFFFF",
+                color: "var(--foreground)",
                 fontSize: "12px",
+              }}
+              itemStyle={{
+                color: "var(--foreground)",
               }}
               formatter={(value) => [
                 `${value} applications`,
                 "Applications",
               ]}
-              labelStyle={{ color: "#C4B5FD" }}
+              labelStyle={{
+                color: "#A78BFA",
+              }}
             />
 
             <Area
@@ -117,13 +128,13 @@ export default function ApplicationsChart() {
               dot={{
                 r: 3,
                 fill: "#A78BFA",
-                stroke: "#101832",
+                stroke: "var(--surface)",
                 strokeWidth: 1.5,
               }}
               activeDot={{
                 r: 6,
                 fill: "#C4B5FD",
-                stroke: "#FFFFFF",
+                stroke: "var(--foreground)",
                 strokeWidth: 2,
               }}
             />

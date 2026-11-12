@@ -1,80 +1,127 @@
+
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   Search,
   Bell,
   Sun,
+  Moon,
   Menu,
 } from "lucide-react";
 
 export default function Navbar() {
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  // Load saved theme when the component mounts
+  useEffect(() => {
+  const savedTheme = localStorage.getItem("hireflow-theme");
+
+  if (savedTheme === "light" || savedTheme === "dark") {
+    document.documentElement.classList.toggle(
+      "dark",
+      savedTheme === "dark"
+    );
+  }
+  }, []);
+
+  // Switch between Light and Dark Mode
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    setTheme(newTheme);
+
+    document.documentElement.classList.toggle(
+      "dark",
+      newTheme === "dark"
+    );
+
+    localStorage.setItem("hireflow-theme", newTheme);
+  };
+
   return (
-    <header className="sticky top-0 z-30 h-20 border-b border-white/5 bg-[#080F24]/90 backdrop-blur-xl">
-      
-      <div className="flex h-full items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--surface)] px-4 py-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between gap-4">
 
-        {/* Mobile Menu */}
-        <button className="rounded-lg p-2 text-slate-300 hover:bg-white/5 lg:hidden">
-          <Menu className="h-6 w-6" />
-        </button>
+        {/* Left Section */}
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            aria-label="Open navigation menu"
+            className="rounded-lg p-2 text-[var(--muted)] hover:bg-[var(--surface-secondary)] lg:hidden"
+          >
+            <Menu size={22} />
+          </button>
 
-        {/* Search */}
-        <div className="relative hidden max-w-2xl flex-1 sm:block">
+          <div className="relative hidden sm:block">
+            <Search
+              size={18}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
+            />
 
-          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-
-          <input
-            type="text"
-            placeholder="Search applications..."
-            className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] pl-12 pr-20 text-sm text-white outline-none placeholder:text-slate-500 focus:border-purple-500/50"
-          />
-
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md border border-white/10 px-2 py-1 text-xs text-slate-500">
-            Ctrl K
-          </span>
-
+            <input
+              type="search"
+              placeholder="Search anything..."
+              className="w-56 rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] py-2.5 pl-10 pr-4 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-violet-500 lg:w-72"
+            />
+          </div>
         </div>
 
-        {/* Right side */}
-        <div className="flex items-center gap-3">
+        {/* Right Section */}
+        <div className="flex items-center gap-2 sm:gap-4">
 
-          <button className="hidden rounded-full border border-white/10 bg-white/5 p-2.5 text-slate-300 hover:bg-white/10 sm:block">
-            <Sun className="h-5 w-5" />
+          {/* Theme Toggle */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            title={
+              theme === "dark"
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            className="rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] p-2.5 text-[var(--foreground)] transition hover:opacity-75"
+          >
+            {theme === "dark" ? (
+              <Sun size={19} />
+            ) : (
+              <Moon size={19} />
+            )}
           </button>
 
-          <button className="relative rounded-full border border-white/10 bg-white/5 p-2.5 text-slate-300 hover:bg-white/10">
-            
-            <Bell className="h-5 w-5" />
+          {/* Notifications */}
+          <button
+            type="button"
+            aria-label="Notifications"
+            className="relative rounded-lg p-2.5 text-[var(--muted)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)]"
+          >
+            <Bell size={20} />
 
-            <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-pink-500 text-[10px] font-bold">
-              3
-            </span>
-
+            <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-violet-500" />
           </button>
 
-          {/* User */}
-          <div className="hidden items-center gap-3 sm:flex">
-
-            <div className="h-10 w-10 overflow-hidden rounded-full bg-slate-700">
-              {/* profile image later */}
+          {/* Profile */}
+          <div className="flex items-center gap-3 border-l border-[var(--border)] pl-3 sm:pl-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-violet-600 text-sm font-semibold text-white">
+              B
             </div>
 
-            <div className="hidden lg:block">
-              <p className="text-sm font-medium">
+            <div className="hidden sm:block">
+              <p className="text-sm font-medium text-[var(--foreground)]">
                 Basil
               </p>
-
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-[var(--muted)]">
                 Frontend Developer
               </p>
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </header>
   );
 }
+  

@@ -70,32 +70,33 @@ const applications: Application[] = [
 
 const statusStyles: Record<string, string> = {
   Applied:
-    "bg-violet-500/20 text-violet-300 border-violet-400/20",
+    "bg-violet-500/20 text-violet-500 dark:text-violet-300 border-violet-400/20",
   Shortlisted:
-    "bg-cyan-500/20 text-cyan-300 border-cyan-400/20",
+    "bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border-cyan-400/20",
   Interview:
-    "bg-emerald-500/20 text-emerald-300 border-emerald-400/20",
+    "bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border-emerald-400/20",
   Offer:
-    "bg-amber-500/20 text-amber-300 border-amber-400/20",
+    "bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-400/20",
   Rejected:
-    "bg-rose-500/20 text-rose-300 border-rose-400/20",
+    "bg-rose-500/20 text-rose-600 dark:text-rose-300 border-rose-400/20",
 };
 
 export default function RecentApplications() {
   const router = useRouter();
+
   return (
-    <section className="min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#101832]">
+    <section className="min-w-0 overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)] transition-colors duration-200">
+
       {/* Header */}
       <div className="flex items-center justify-between gap-3 p-4 sm:p-5">
-        <h2 className="text-base font-semibold text-white sm:text-lg">
+        <h2 className="text-base font-semibold text-[var(--foreground)] sm:text-lg">
           Recent Applications
         </h2>
 
         <button
           type="button"
           onClick={() => router.push("/applications")}
-
-          className="shrink-0 text-sm text-violet-400 transition hover:text-violet-300"
+          className="shrink-0 text-sm text-violet-500 transition hover:text-violet-400"
         >
           View All →
         </button>
@@ -104,8 +105,9 @@ export default function RecentApplications() {
       {/* Responsive table */}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+
           <thead>
-            <tr className="bg-white/[0.03] text-xs text-slate-400">
+            <tr className="bg-[var(--surface-secondary)] text-xs text-[var(--muted)]">
               <th className="px-4 py-3 font-medium sm:px-5">#</th>
               <th className="px-4 py-3 font-medium">Company</th>
               <th className="px-4 py-3 font-medium">Position</th>
@@ -122,9 +124,9 @@ export default function RecentApplications() {
             {applications.map((app) => (
               <tr
                 key={app.id}
-                className="border-t border-white/5 transition hover:bg-white/[0.025]"
+                className="border-t border-[var(--border)] transition-colors hover:bg-[var(--surface-secondary)]"
               >
-                <td className="px-4 py-3.5 text-slate-300 sm:px-5">
+                <td className="px-4 py-3.5 text-[var(--muted)] sm:px-5">
                   {app.id}
                 </td>
 
@@ -146,11 +148,11 @@ export default function RecentApplications() {
                   </div>
                 </td>
 
-                <td className="whitespace-nowrap px-4 py-3.5 font-medium text-slate-100">
+                <td className="whitespace-nowrap px-4 py-3.5 font-medium text-[var(--foreground)]">
                   {app.position}
                 </td>
 
-                <td className="whitespace-nowrap px-4 py-3.5 text-slate-300">
+                <td className="whitespace-nowrap px-4 py-3.5 text-[var(--muted)]">
                   {app.location}
                 </td>
 
@@ -158,14 +160,14 @@ export default function RecentApplications() {
                   <span
                     className={`inline-flex whitespace-nowrap rounded-lg border px-3 py-1.5 text-xs font-medium ${
                       statusStyles[app.status] ??
-                      "border-slate-400/20 bg-slate-500/20 text-slate-300"
+                      "border-slate-400/20 bg-slate-500/20 text-slate-500 dark:text-slate-300"
                     }`}
                   >
                     {app.status}
                   </span>
                 </td>
 
-                <td className="whitespace-nowrap px-4 py-3.5 text-slate-300">
+                <td className="whitespace-nowrap px-4 py-3.5 text-[var(--muted)]">
                   {app.date}
                 </td>
 
@@ -174,9 +176,11 @@ export default function RecentApplications() {
                     type="button"
                     aria-label={`View ${app.company} application`}
                     onClick={() =>
-                      router.push(`/applications?applicationId=${app.id}`)
+                      router.push(
+                        `/applications?applicationId=${app.id}`
+                      )
                     }
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-slate-300 transition hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-white"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] text-[var(--muted)] transition hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-violet-500"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </button>
@@ -184,13 +188,15 @@ export default function RecentApplications() {
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
 
       {/* Footer */}
-      <div className="border-t border-white/5 px-5 py-3 text-xs text-slate-500">
+      <div className="border-t border-[var(--border)] px-5 py-3 text-xs text-[var(--muted)]">
         Showing {applications.length} recent applications
       </div>
+
     </section>
   );
 }

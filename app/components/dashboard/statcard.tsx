@@ -1,3 +1,4 @@
+
 import { LucideIcon, TrendingDown, TrendingUp } from "lucide-react";
 
 interface StatCardProps {
@@ -27,21 +28,20 @@ export default function StatCard({
         overflow-hidden
         rounded-2xl
         border
-        border-white/10
+        border-[var(--border)]
+        bg-[var(--surface)]
         p-5
-        transition
+        transition-all
         duration-300
         hover:-translate-y-1
-        hover:border-white/20
+        hover:border-violet-400/40
       "
       style={{
-        background: `linear-gradient(135deg, ${color}18, rgba(15, 23, 42, 0.8))`,
+        background: `linear-gradient(135deg, ${color}18, var(--surface))`,
       }}
     >
-
       {/* Top */}
       <div className="flex items-start justify-between">
-
         <div
           className="flex h-12 w-12 items-center justify-center rounded-xl"
           style={{
@@ -53,46 +53,41 @@ export default function StatCard({
             style={{ color }}
           />
         </div>
-
       </div>
 
       {/* Content */}
       <div className="mt-5">
-
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-[var(--muted)]">
           {title}
         </p>
 
-        <p className="mt-1 text-3xl font-semibold text-white">
+        <p className="mt-1 text-3xl font-semibold text-[var(--foreground)]">
           {value}
         </p>
-
       </div>
 
       {/* Bottom */}
       <div className="mt-4 flex items-center gap-2">
-
         {isUp ? (
-          <TrendingUp className="h-4 w-4 text-emerald-400" />
+          <TrendingUp className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
         ) : (
-          <TrendingDown className="h-4 w-4 text-pink-400" />
+          <TrendingDown className="h-4 w-4 text-pink-500 dark:text-pink-400" />
         )}
 
         <span
           className={
             isUp
-              ? "text-sm font-medium text-emerald-400"
-              : "text-sm font-medium text-pink-400"
+              ? "text-sm font-medium text-emerald-600 dark:text-emerald-400"
+              : "text-sm font-medium text-pink-600 dark:text-pink-400"
           }
         >
           {isUp ? "+" : "-"}
           {percentage}%
         </span>
 
-        <span className="text-xs text-slate-500">
+        <span className="text-xs text-[var(--muted)]">
           vs last month
         </span>
-
       </div>
 
       {/* Decorative glow */}
@@ -102,7 +97,6 @@ export default function StatCard({
           backgroundColor: color,
         }}
       />
-
     </div>
   );
 }
