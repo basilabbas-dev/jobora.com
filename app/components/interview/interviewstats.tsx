@@ -1,5 +1,10 @@
 
-import { CalendarDays, Clock, CheckCircle2, XCircle } from "lucide-react";
+import {
+  CalendarDays,
+  Clock,
+  CheckCircle2,
+  XCircle,
+} from "lucide-react";
 
 const stats = [
   {
@@ -33,17 +38,19 @@ export default function InterviewStats() {
         return (
           <div
             key={stat.title}
-            className="rounded-xl border border-white/10 bg-[#101832] p-5"
-            >
+            className="rounded-xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors duration-200"
+          >
             <div className="flex items-center justify-between">
-              <p className="text-sm text-slate-400">{stat.title}</p>
+              <p className="text-sm text-[var(--muted)]">
+                {stat.title}
+              </p>
 
-              <div className="rounded-lg bg-violet-500/10 p-2 text-violet-300">
+              <div className="rounded-lg bg-violet-500/10 p-2 text-violet-500 dark:text-violet-300">
                 <Icon size={19} />
               </div>
             </div>
 
-            <h2 className="mt-4 text-2xl font-bold text-white">
+            <h2 className="mt-4 text-2xl font-bold text-[var(--foreground)]">
               {stat.value}
             </h2>
           </div>

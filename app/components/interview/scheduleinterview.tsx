@@ -49,16 +49,23 @@ export default function ScheduleInterviewModal({
     onClose();
   };
 
+  const inputStyles =
+    "w-full rounded-lg border border-[var(--border)] bg-[var(--surface-secondary)] px-4 py-3 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-violet-500";
+
+  const labelStyles =
+    "mb-2 block text-sm text-[var(--foreground)]";
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-      <div className="w-full max-w-lg rounded-xl border border-white/10 bg-[#101832] p-6 shadow-xl">
+      <div className="w-full max-w-lg rounded-xl border border-[var(--border)] bg-[var(--surface)] p-6 shadow-xl">
 
+        {/* Modal Header */}
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-xl font-semibold text-[var(--foreground)]">
               Schedule Interview
             </h2>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-1 text-sm text-[var(--muted)]">
               Add details about your upcoming interview.
             </p>
           </div>
@@ -66,17 +73,19 @@ export default function ScheduleInterviewModal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-400 hover:bg-white/10 hover:text-white"
+            className="rounded-lg p-2 text-[var(--muted)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)]"
             aria-label="Close modal"
           >
             <X size={20} />
           </button>
         </div>
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
 
+          {/* Company Name */}
           <div>
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className={labelStyles}>
               Company Name
             </label>
             <input
@@ -86,12 +95,13 @@ export default function ScheduleInterviewModal({
               onChange={handleChange}
               placeholder="e.g. Google"
               required
-              className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-violet-500"
+              className={inputStyles}
             />
           </div>
 
+          {/* Job Role */}
           <div>
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className={labelStyles}>
               Job Role
             </label>
             <input
@@ -101,13 +111,14 @@ export default function ScheduleInterviewModal({
               onChange={handleChange}
               placeholder="e.g. Frontend Developer"
               required
-              className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-violet-500"
+              className={inputStyles}
             />
           </div>
 
+          {/* Date and Time */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-2 block text-sm text-slate-300">
+              <label className={labelStyles}>
                 Interview Date
               </label>
               <input
@@ -117,12 +128,12 @@ export default function ScheduleInterviewModal({
                 onChange={handleChange}
                 min={new Date().toISOString().split("T")[0]}
                 required
-                className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none focus:border-violet-500"
+                className={inputStyles}
               />
             </div>
 
             <div>
-              <label className="mb-2 block text-sm text-slate-300">
+              <label className={labelStyles}>
                 Interview Time
               </label>
               <input
@@ -131,20 +142,21 @@ export default function ScheduleInterviewModal({
                 value={formData.time}
                 onChange={handleChange}
                 required
-                className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none focus:border-violet-500"
+                className={inputStyles}
               />
             </div>
           </div>
 
+          {/* Interview Type */}
           <div>
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className={labelStyles}>
               Interview Type
             </label>
             <select
               name="type"
               value={formData.type}
               onChange={handleChange}
-              className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none focus:border-violet-500"
+              className={inputStyles}
             >
               <option>Technical Round</option>
               <option>HR Round</option>
@@ -153,26 +165,28 @@ export default function ScheduleInterviewModal({
             </select>
           </div>
 
+          {/* Interview Mode */}
           <div>
-            <label className="mb-2 block text-sm text-slate-300">
+            <label className={labelStyles}>
               Interview Mode
             </label>
             <select
               name="mode"
               value={formData.mode}
               onChange={handleChange}
-              className="w-full rounded-lg border border-white/10 bg-[#0B132B] px-4 py-3 text-sm text-white outline-none focus:border-violet-500"
+              className={inputStyles}
             >
               <option>Online</option>
               <option>On-site</option>
             </select>
           </div>
 
-          <div className="flex justify-end gap-3 border-t border-white/10 pt-5">
+          {/* Footer Buttons */}
+          <div className="flex justify-end gap-3 border-t border-[var(--border)] pt-5">
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-white/10 px-4 py-2.5 text-sm text-slate-300 transition hover:bg-white/5"
+              className="rounded-lg border border-[var(--border)] px-4 py-2.5 text-sm text-[var(--foreground)] transition hover:bg-[var(--surface-secondary)]"
             >
               Cancel
             </button>

@@ -24,7 +24,7 @@ export default function InterviewFilters({
       <div className="relative max-w-md">
         <Search
           size={18}
-          className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--muted)]"
         />
 
         <input
@@ -32,7 +32,7 @@ export default function InterviewFilters({
           placeholder="Search company or job role..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full rounded-lg border border-white/10 bg-[#101832] py-3 pl-10 pr-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-violet-500"
+          className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] py-3 pl-10 pr-4 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-violet-500"
         />
       </div>
 
@@ -46,7 +46,7 @@ export default function InterviewFilters({
             className={`shrink-0 rounded-lg px-4 py-2 text-sm font-medium transition ${
               activeFilter === filter
                 ? "bg-violet-600 text-white"
-                : "border border-white/10 bg-[#101832] text-slate-400 hover:text-white"
+                : "border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)] hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)]"
             }`}
           >
             {filter}
