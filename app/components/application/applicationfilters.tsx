@@ -26,7 +26,7 @@ export default function ApplicationFilters({
   setActiveFilter,
 }: ApplicationFiltersProps) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-[#101832] p-4 sm:p-5">
+    <section className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors duration-200 sm:p-5">
 
       {/* Search */}
       <div className="flex flex-col gap-4 sm:flex-row">
@@ -34,7 +34,7 @@ export default function ApplicationFilters({
         <div className="relative flex-1">
           <Search
             size={19}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--muted)]"
           />
 
           <input
@@ -42,13 +42,13 @@ export default function ApplicationFilters({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by company or job title..."
-            className="h-12 w-full rounded-xl border border-white/10 bg-[#0B132B] pl-12 pr-4 text-sm text-white outline-none placeholder:text-slate-500 focus:border-violet-500"
+            className="h-12 w-full rounded-xl border border-[var(--border)] bg-[var(--surface-secondary)] pl-12 pr-4 text-sm text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-violet-500"
           />
         </div>
 
         <button
           type="button"
-          className="flex h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-[#0B132B] px-5 text-sm text-slate-300 transition hover:bg-white/5"
+          className="flex h-12 items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface-secondary)] px-5 text-sm text-[var(--foreground)] transition hover:bg-[var(--background)]"
         >
           <SlidersHorizontal size={17} />
           Filters
@@ -68,7 +68,7 @@ export default function ApplicationFilters({
               className={`rounded-lg px-4 py-2.5 text-sm font-medium transition ${
                 activeFilter === filter
                   ? "bg-violet-600 text-white"
-                  : "bg-white/[0.03] text-slate-400 hover:bg-white/[0.07] hover:text-white"
+                  : "bg-[var(--surface-secondary)] text-[var(--muted)] hover:bg-[var(--background)] hover:text-[var(--foreground)]"
               }`}
             >
               {filter}

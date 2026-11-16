@@ -18,19 +18,24 @@ type Props = {
 
 export default function ApplicationsTable({ applications }: Props) {
   return (
-    <div className="overflow-hidden rounded-xl border border-white/10 bg-[#101832]">
-      <div className="border-b border-white/10 p-5">
-        <h2 className="text-lg font-semibold text-white">
+    <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)] transition-colors duration-200">
+
+      {/* Header */}
+      <div className="border-b border-[var(--border)] p-5">
+        <h2 className="text-lg font-semibold text-[var(--foreground)]">
           All Applications
         </h2>
-        <p className="mt-1 text-sm text-slate-400">
+
+        <p className="mt-1 text-sm text-[var(--muted)]">
           Manage and track your job applications
         </p>
       </div>
 
+      {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[750px] text-left">
-          <thead className="bg-white/[0.03] text-xs uppercase text-slate-400">
+
+          <thead className="bg-[var(--surface-secondary)] text-xs uppercase text-[var(--muted)]">
             <tr>
               <th className="px-5 py-4">Company</th>
               <th className="px-5 py-4">Job Role</th>
@@ -41,47 +46,54 @@ export default function ApplicationsTable({ applications }: Props) {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-[var(--border)]">
             {applications.length > 0 ? (
               applications.map((app) => (
                 <tr
                   key={app.id}
-                  className="transition hover:bg-white/[0.03]"
+                  className="transition hover:bg-[var(--surface-secondary)]"
                 >
+                  {/* Company */}
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-300">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/10 text-violet-500 dark:text-violet-300">
                         <Building2 size={18} />
                       </div>
-                      <span className="font-medium text-white">
+
+                      <span className="font-medium text-[var(--foreground)]">
                         {app.company}
                       </span>
                     </div>
                   </td>
 
-                  <td className="px-5 py-4 text-sm text-slate-300">
+                  {/* Job Role */}
+                  <td className="px-5 py-4 text-sm text-[var(--foreground)]">
                     {app.role}
                   </td>
 
-                  <td className="px-5 py-4 text-sm text-slate-400">
+                  {/* Location */}
+                  <td className="px-5 py-4 text-sm text-[var(--muted)]">
                     {app.location}
                   </td>
 
-                  <td className="px-5 py-4 text-sm text-slate-400">
+                  {/* Applied Date */}
+                  <td className="px-5 py-4 text-sm text-[var(--muted)]">
                     {app.appliedDate}
                   </td>
 
+                  {/* Status */}
                   <td className="px-5 py-4">
-                    <span className="rounded-full bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
+                    <span className="rounded-full border border-violet-500/20 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-600 dark:text-violet-300">
                       {app.status}
                     </span>
                   </td>
 
+                  {/* Action */}
                   <td className="px-5 py-4">
                     <button
                       type="button"
                       aria-label={`More actions for ${app.company}`}
-                      className="rounded-lg p-2 text-slate-400 transition hover:bg-white/10 hover:text-white"
+                      className="rounded-lg p-2 text-[var(--muted)] transition hover:bg-[var(--surface-secondary)] hover:text-[var(--foreground)]"
                     >
                       <MoreHorizontal size={18} />
                     </button>
@@ -92,13 +104,14 @@ export default function ApplicationsTable({ applications }: Props) {
               <tr>
                 <td
                   colSpan={6}
-                  className="px-5 py-12 text-center text-sm text-slate-400"
+                  className="px-5 py-12 text-center text-sm text-[var(--muted)]"
                 >
                   No applications found.
                 </td>
               </tr>
             )}
           </tbody>
+
         </table>
       </div>
     </div>

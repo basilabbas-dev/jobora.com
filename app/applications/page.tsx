@@ -71,24 +71,33 @@ export default function ApplicationsPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
+
+        {/* Page Header */}
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <h1 className="text-2xl font-bold text-white">
+            <h1 className="text-2xl font-bold text-[var(--foreground)]">
               Applications
             </h1>
-            <p className="mt-1 text-sm text-slate-400">
+
+            <p className="mt-1 text-sm text-[var(--muted)]">
               Track and manage all your job applications.
             </p>
           </div>
 
-          <button className="flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-violet-500">
+          {/* Add Application Button */}
+          <button
+            type="button"
+            className="flex items-center justify-center gap-2 rounded-lg bg-violet-600 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-violet-500"
+          >
             <Plus size={18} />
             Add Application
           </button>
         </div>
 
+        {/* Application Statistics */}
         <ApplicationStats />
 
+        {/* Search and Filters */}
         <ApplicationFilters
           search={search}
           setSearch={setSearch}
@@ -96,11 +105,14 @@ export default function ApplicationsPage() {
           setActiveFilter={setActiveFilter}
         />
 
+        {/* Applications Table */}
         <ApplicationsTable applications={filteredApplications} />
 
-        <p className="text-sm text-slate-500">
+        {/* Results Count */}
+        <p className="text-sm text-[var(--muted)]">
           Showing {filteredApplications.length} of {applications.length} applications
         </p>
+
       </div>
     </DashboardLayout>
   );

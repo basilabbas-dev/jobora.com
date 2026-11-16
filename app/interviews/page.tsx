@@ -58,7 +58,6 @@ const initialInterviews: Interview[] = [
 export default function InterviewsPage() {
   const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
-
   const [showModal, setShowModal] = useState(false);
 
   const [interviewList, setInterviewList] =
@@ -84,7 +83,8 @@ export default function InterviewsPage() {
       interview.role.toLowerCase().includes(search.toLowerCase());
 
     const matchesStatus =
-      activeFilter === "All" || interview.status === activeFilter;
+      activeFilter === "All" ||
+      interview.status === activeFilter;
 
     return matchesSearch && matchesStatus;
   });
@@ -92,13 +92,15 @@ export default function InterviewsPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
+
         {/* Page Header */}
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <h1 className="text-2xl font-bold text-white">
+            <h1 className="text-2xl font-bold text-[var(--foreground)]">
               Interviews
             </h1>
-            <p className="mt-1 text-sm text-slate-400">
+
+            <p className="mt-1 text-sm text-[var(--muted)]">
               Manage and track your upcoming and completed interviews.
             </p>
           </div>
@@ -126,16 +128,18 @@ export default function InterviewsPage() {
 
         {/* Interview List */}
         <div>
-          <h2 className="mb-4 text-lg font-semibold text-white">
+          <h2 className="mb-4 text-lg font-semibold text-[var(--foreground)]">
             All Interviews
           </h2>
 
           <InterviewsList interviews={filteredInterviews} />
         </div>
 
-        <p className="text-sm text-slate-500">
+        {/* Results Count */}
+        <p className="text-sm text-[var(--muted)]">
           Showing {filteredInterviews.length} of {interviewList.length} interviews
         </p>
+
       </div>
 
       {/* Schedule Interview Modal */}

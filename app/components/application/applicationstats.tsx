@@ -47,11 +47,11 @@ export default function ApplicationStats() {
         return (
           <div
             key={stat.title}
-            className="rounded-2xl border border-white/10 bg-[#101832] p-5 transition hover:border-white/20"
+            className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors duration-200 hover:border-violet-500/40"
           >
             <div className="flex items-center justify-between">
 
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-[var(--muted)]">
                 {stat.title}
               </p>
 
@@ -64,7 +64,7 @@ export default function ApplicationStats() {
 
             </div>
 
-            <h2 className="mt-4 text-3xl font-semibold text-white">
+            <h2 className="mt-4 text-3xl font-semibold text-[var(--foreground)]">
               {stat.value}
             </h2>
 
