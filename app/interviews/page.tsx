@@ -93,7 +93,6 @@ export default function InterviewsPage() {
     <DashboardLayout>
       <div className="space-y-6">
 
-        {/* Page Header */}
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h1 className="text-2xl font-bold text-[var(--foreground)]">
