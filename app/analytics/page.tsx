@@ -1,12 +1,12 @@
 
 import DashboardLayout from "../components/dashboard/dashboardlayout";
+import AnalyticsOverview from "../components/analytics/analyticsoverview";
 
 export default function AnalyticsPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
 
-        {/* Page Header */}
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
             <h1 className="text-2xl font-semibold text-[var(--foreground)] sm:text-3xl">
@@ -18,7 +18,6 @@ export default function AnalyticsPage() {
             </p>
           </div>
 
-          {/* Date Filter */}
           <select
             defaultValue="30"
             className="w-full rounded-lg border border-[var(--border)] bg-[var(--surface)] px-4 py-3 text-sm text-[var(--foreground)] outline-none focus:border-violet-500 sm:w-48"
@@ -29,6 +28,9 @@ export default function AnalyticsPage() {
             <option value="year">This year</option>
           </select>
         </div>
+
+        <AnalyticsOverview />
+        
 
       </div>
     </DashboardLayout>
