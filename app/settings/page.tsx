@@ -1,4 +1,7 @@
 import DashboardLayout from "../components/dashboard/dashboardlayout";
+import ProfileSettings from "../components/settings/profilesetting";
+// import AppearanceSettings from "../components/settings/appearancesetting"
+
 import { User, Palette, Bell, LogOut } from "lucide-react";
 
 const settings = [
@@ -28,7 +31,7 @@ export default function SettingsPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
-        {/* Header */}
+
         <div>
           <h1 className="text-2xl font-semibold text-[var(--foreground)] sm:text-3xl">
             Settings
@@ -38,7 +41,6 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* Settings Cards */}
         <div className="space-y-4">
           {settings.map((item) => {
             const Icon = item.icon;
@@ -64,6 +66,9 @@ export default function SettingsPage() {
             );
           })}
         </div>
+
+        <ProfileSettings />
+        {/* <AppearanceSettings /> */}
       </div>
     </DashboardLayout>
   );
