@@ -1,6 +1,10 @@
 
 import DashboardLayout from "../components/dashboard/dashboardlayout";
 import AnalyticsOverview from "../components/analytics/analyticsoverview";
+import ApplicationActivityChart from "../components/analytics/applicationactivitychart";
+import ApplicationStatusChart from "../components/analytics/applicationstatuschart";
+import InterviewPerformanceChart from "../components/analytics/interviewperformancechart";
+import JobSearchInsights from "../components/analytics/jobsearchinsight";
 
 export default function AnalyticsPage() {
   return (
@@ -31,6 +35,13 @@ export default function AnalyticsPage() {
 
         <AnalyticsOverview />
         
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          <ApplicationActivityChart />
+          <ApplicationStatusChart />
+        </div>
+
+        <InterviewPerformanceChart />
+        <JobSearchInsights />
 
       </div>
     </DashboardLayout>
